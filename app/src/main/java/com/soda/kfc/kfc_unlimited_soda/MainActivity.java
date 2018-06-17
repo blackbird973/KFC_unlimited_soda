@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,7 +24,8 @@ public class MainActivity extends AppCompatActivity {
     //FIN AJOUT
     Button btn_valider;
 
-
+    int progressChanged = 10; //PERMET D'AVOIR UN MIN A 10
+    private static final String TAG = "MyActivity";
 
 
     @Override
@@ -51,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         sb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
-            int progressChanged = 10; //PERMET D'AVOIR UN MIN A 10
+
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -72,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
                 } else if (progressChanged == 50 ) {
                         image_gobelet.setImageDrawable(getResources().getDrawable(R.drawable.gob5));
                 }
+
+
 
             }
 
@@ -103,7 +107,16 @@ public class MainActivity extends AppCompatActivity {
         btn_valider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,Qrcode.class));
+
+                //PASSE LA VALEUR DE LA SEEKBAR EN INTENT DANS LA CLASS Qrcode.java ET LANCE Qrcode.java
+                Intent intent = new Intent(getBaseContext(), Qrcode.class);
+                intent.putExtra("SB_value", String.valueOf(progressChanged));
+                startActivity(intent);
+
+
+
+
+
             }
         });
 
