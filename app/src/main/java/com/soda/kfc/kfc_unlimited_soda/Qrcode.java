@@ -41,11 +41,17 @@ class Qrcode extends Activity {
         String basename;
         basename = "https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=WBCB;SERVICE;1;";
 
+
+
         //ADD NOMBRE ALEATOIRE
         Random rand = new Random();
         int n = rand.nextInt(100);
-        //Reste à implementer la valeur de la seekbar du mainActivity à la place du "50"
-        String url_final = basename + String.valueOf(n) + ";" + "50" ;
+
+        //RECUPERE LA STRING DE L'INTENT DU MAIN ACTIVITY
+        String SBvalue = getIntent().getStringExtra("SB_value");
+
+        //URL FINAL COMPLET
+        String url_final = basename + String.valueOf(n) + ";" + SBvalue ;
 
         Log.v(TAG, url_final);
 
