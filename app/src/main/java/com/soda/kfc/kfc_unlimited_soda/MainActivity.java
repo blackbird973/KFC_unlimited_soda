@@ -31,47 +31,39 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-
-
-
-
-
-
-        btn_valider=(Button) findViewById(R.id.viewGenerateButton);
-        sb=(SeekBar) findViewById(R.id.simpleSeekBar);
-        image_gobelet=(ImageView) findViewById(R.id.gallery);
+        btn_valider = (Button) findViewById(R.id.viewGenerateButton);
+        sb = (SeekBar) findViewById(R.id.simpleSeekBar);
+        image_gobelet = (ImageView) findViewById(R.id.gallery);
         sb.setProgress(20); //Initial Value of the SeekBar
         sb.setMax(40); //Set the Maximum Value Of the SeekBar
 
         sb.incrementProgressBy(10);
 
-        valuetxt=(TextView) findViewById(R.id.varBoisson);
+        valuetxt = (TextView) findViewById(R.id.varBoisson);
         valuetxt.setText("You choose to fill " + sb.getProgress() + " cl");
 
         sb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
 
-
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                progressChanged = 10+ progress;
+                progressChanged = 10 + progress;
                 progressChanged = progressChanged / 10;
                 progressChanged = progressChanged * 10;
                 valuetxt.setText("You choose to fill " + progressChanged + " cl");
 
                 //Set the correct drawable in the ImageView for each value of the SeekBar
-                if (progressChanged <= 10){
-                        image_gobelet.setImageDrawable(getResources().getDrawable(R.drawable.gob1));
-                } else if (progressChanged >= 10 && progressChanged <= 20 ) {
-                        image_gobelet.setImageDrawable(getResources().getDrawable(R.drawable.gob2));
-                } else if (progressChanged >= 20 && progressChanged <= 30 ) {
-                        image_gobelet.setImageDrawable(getResources().getDrawable(R.drawable.gob3));
-                } else if (progressChanged >= 30 && progressChanged <= 40 ) {
-                        image_gobelet.setImageDrawable(getResources().getDrawable(R.drawable.gob4));
-                } else if (progressChanged == 50 ) {
-                        image_gobelet.setImageDrawable(getResources().getDrawable(R.drawable.gob5));
+                if (progressChanged <= 10) {
+                    image_gobelet.setImageDrawable(getResources().getDrawable(R.drawable.gob1));
+                } else if (progressChanged >= 10 && progressChanged <= 20) {
+                    image_gobelet.setImageDrawable(getResources().getDrawable(R.drawable.gob2));
+                } else if (progressChanged >= 20 && progressChanged <= 30) {
+                    image_gobelet.setImageDrawable(getResources().getDrawable(R.drawable.gob3));
+                } else if (progressChanged >= 30 && progressChanged <= 40) {
+                    image_gobelet.setImageDrawable(getResources().getDrawable(R.drawable.gob4));
+                } else if (progressChanged == 50) {
+                    image_gobelet.setImageDrawable(getResources().getDrawable(R.drawable.gob5));
                 }
-
 
 
             }
@@ -93,8 +85,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //DEBUT ABOUT POPUP
-                startActivity(new Intent(MainActivity.this,Pop.class));
-
+                startActivity(new Intent(MainActivity.this, Pop.class));
 
 
             }
@@ -111,19 +102,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
 
 
-
-
-
             }
         });
 
 
-
-
     }
-
-
-
 
 
     @Override

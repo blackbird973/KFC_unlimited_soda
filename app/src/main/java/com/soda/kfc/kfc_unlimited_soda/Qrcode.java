@@ -12,7 +12,6 @@ import com.squareup.picasso.Picasso;
 import java.util.Random;
 
 
-
 class Qrcode extends Activity {
 
     private static final String TAG = "MyActivity";
@@ -20,8 +19,6 @@ class Qrcode extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
 
 
         setContentView(R.layout.qrcode_display_popup);
@@ -39,7 +36,6 @@ class Qrcode extends Activity {
         basename = "https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=WBCB;SERVICE;1;";
 
 
-
         //Add a random int between 0 - 100
         Random rand = new Random();
         int n = rand.nextInt(100);
@@ -48,7 +44,7 @@ class Qrcode extends Activity {
         String SBvalue = getIntent().getStringExtra("SB_value");
 
         //Comple Final URL
-        String finalUrl = basename + String.valueOf(n) + ";" + SBvalue ;
+        String finalUrl = basename + String.valueOf(n) + ";" + SBvalue;
 
         Log.v(TAG, finalUrl);
 
