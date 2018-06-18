@@ -3,10 +3,7 @@ package com.soda.kfc.kfc_unlimited_soda;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,14 +14,14 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    //DEBUT AJOUT
+
     SeekBar sb;
     TextView valuetxt;
     ImageView image_gobelet;
-    //FIN AJOUT
+
     Button btn_valider;
 
-    int progressChanged = 10; //PERMET D'AVOIR UN MIN A 10
+    int progressChanged = 10; //permit a minimum of 10 for the SeekBar
     private static final String TAG = "MyActivity";
 
 
@@ -33,23 +30,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //DEBUT AJOUT
 
 
 
 
 
 
-        btn_valider=(Button) findViewById(R.id.view_boutonvalider);
+
+        btn_valider=(Button) findViewById(R.id.viewGenerateButton);
         sb=(SeekBar) findViewById(R.id.simpleSeekBar);
         image_gobelet=(ImageView) findViewById(R.id.gallery);
-        sb.setProgress(20); //VALEUR INITIALE DE LA SEEKBAR
-        sb.setMax(40); //Met le max de la seekbar
+        sb.setProgress(20); //Initial Value of the SeekBar
+        sb.setMax(40); //Set the Maximum Value Of the SeekBar
 
         sb.incrementProgressBy(10);
 
-        valuetxt=(TextView) findViewById(R.id.varboisson);
-        valuetxt.setText("Tu as choisis de remplir " + sb.getProgress() + " centilitres");
+        valuetxt=(TextView) findViewById(R.id.varBoisson);
+        valuetxt.setText("You choose to fill " + sb.getProgress() + " cl");
 
         sb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
@@ -60,9 +57,9 @@ public class MainActivity extends AppCompatActivity {
                 progressChanged = 10+ progress;
                 progressChanged = progressChanged / 10;
                 progressChanged = progressChanged * 10;
-                valuetxt.setText("Tu as choisis de remplir " + progressChanged + " centilitres");
+                valuetxt.setText("You choose to fill " + progressChanged + " cl");
 
-                //ANIMATION DU REMPLISSAGE DU GOBELET SUIVANT LES VALEURS DE LA SEEKBAR
+                //Set the correct drawable in the ImageView for each value of the SeekBar
                 if (progressChanged <= 10){
                         image_gobelet.setImageDrawable(getResources().getDrawable(R.drawable.gob1));
                 } else if (progressChanged >= 10 && progressChanged <= 20 ) {
@@ -89,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        //FIN AJOUT
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -99,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this,Pop.class));
 
 
-                //FIN ABOUT
+
             }
         });
 
@@ -108,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                //PASSE LA VALEUR DE LA SEEKBAR EN INTENT DANS LA CLASS Qrcode.java ET LANCE Qrcode.java
+                //Give the SeekBar Value as an Intent in Qrcode.java and start activity Qrcode.java
                 Intent intent = new Intent(getBaseContext(), Qrcode.class);
                 intent.putExtra("SB_value", String.valueOf(progressChanged));
                 startActivity(intent);

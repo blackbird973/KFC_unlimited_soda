@@ -6,9 +6,6 @@ import android.support.annotation.Nullable;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.widget.ImageView;
-import android.net.Uri;
-import java.net.URL;
-import com.soda.kfc.kfc_unlimited_soda.MainActivity;
 
 import com.squareup.picasso.Picasso;
 
@@ -24,10 +21,10 @@ class Qrcode extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //DECLARE IMAGEVIEW QR CODE
-        ImageView ImageQRcode = (ImageView) findViewById(R.id.imageViewQrCode);
 
-        setContentView(R.layout.qr_code_affichage);
+
+
+        setContentView(R.layout.qrcode_display_popup);
 
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -37,25 +34,25 @@ class Qrcode extends Activity {
         getWindow().setLayout((int) (width * .8), (int) (height * .6));
 
 
-        //CREATION URL QR CODE
+        //Creation of the final URL for the request
         String basename;
         basename = "https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=WBCB;SERVICE;1;";
 
 
 
-        //ADD NOMBRE ALEATOIRE
+        //Add a random int between 0 - 100
         Random rand = new Random();
         int n = rand.nextInt(100);
 
-        //RECUPERE LA STRING DE L'INTENT DU MAIN ACTIVITY
+        //Get the value of the string passed by the Intent from the MainActivity.java
         String SBvalue = getIntent().getStringExtra("SB_value");
 
-        //URL FINAL COMPLET
-        String url_final = basename + String.valueOf(n) + ";" + SBvalue ;
+        //Comple Final URL
+        String finalUrl = basename + String.valueOf(n) + ";" + SBvalue ;
 
-        Log.v(TAG, url_final);
+        Log.v(TAG, finalUrl);
 
-        loadImageFromUrl(url_final);
+        loadImageFromUrl(finalUrl);
 
 
     }
@@ -63,7 +60,7 @@ class Qrcode extends Activity {
 
     private void loadImageFromUrl(String url_final) {
 
-        ImageView ImageQRcode = (ImageView) findViewById(R.id.imageViewQrCode);
+        ImageView ImageQRcode = (ImageView) findViewById(R.id.imageViewqrCode);
 
         Picasso.with(this).load(url_final).placeholder(R.mipmap.ic_launcher)
                 .error(R.mipmap.ic_launcher)

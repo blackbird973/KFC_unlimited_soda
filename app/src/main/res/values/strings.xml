@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">KFC_unlimited_soda</string>
-    <string name="action_settings">Settings</string>
-    <string name="text_about">Je suis un étudiant passionné de developement Android, j\'ai crée cette application afin d\'avoir des boissons illimitées à KFC</string>
-    <string name="a_propos">A propos</string>
+    <string name="appName">KFC_unlimited_soda</string>
+    <string name="actionSettings">Settings</string>
+    <string name="aboutTextView">I am a student passionate about Android development, I created this application in order to have unlimited drinks at KFC</string>
+    <string name="aboutLabel">About</string>
+    <string name="labelGenerateButton">BUILD QR CODE</string>
 </resources>
